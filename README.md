@@ -1,27 +1,20 @@
-# React + TypeScript + Vite
+# Lista de Tarefa WA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação desenvolvida para gerenciamento diário de tarefas a ser realizadas.
 
-Currently, two official plugins are available:
+## // Stack utilizada
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**CSS, Tailwind, Javascript, ReactJS, Typescript, Vite**
 
-## Expanding the ESLint configuration
+## // Autores
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [@patricklimax](https://www.github.com/patricklimax)
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## // Links
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+[![linkprojeto](https://img.shields.io/badge/veja_o_projeto-green?style=for-the-badge&logo=ko-fi&logoColor=green&labelColor=white)](https://patricklima.vercel.app/)
+
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=prefect&logoColor=000&labelColor=white)](https://patricklima.vercel.app/)
+
+[![linkedin](https://img.shields.io/badge/conect_linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=blue&labelColor=white)](https://www.linkedin.com/in/patricklimax/)
