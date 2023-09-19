@@ -1,0 +1,51 @@
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem
+}
+
+@media (min-width: 768px) {
+  .navRight {
+    gap: 1.5rem;
+  }
+}
+
+.navRight li {
+  position: relative;
+  border-radius: 0.25rem;
+  background-color: #1e293b;
+}
+
+.navRight li:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  right: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #84cc16;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.navRight li:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.navRight li a {
+  text-decoration: none;
+  list-style: none;
+  color: #f1f5f9;
+  letter-spacing: 0.03rem;
+  transition: all 0.3s ease-in;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
