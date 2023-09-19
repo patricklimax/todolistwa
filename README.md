@@ -1,6 +1,6 @@
 # Lista de Tarefa WA
 
-Aplicação desenvolvida para gerenciamento diário de tarefas a ser realizadas.
+Aplicação desenvolvida para gerenciamento diário de tarefas a serem realizadas.
 
 ## // Stack utilizada
 
