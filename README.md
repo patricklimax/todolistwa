@@ -1,6 +1,6 @@
 # Lista de Tarefa WA
 
-Aplicação desenvolvida para gerenciamento diário de tarefas a ser realizadas.
+Aplicação desenvolvida para gerenciamento diário de tarefas a serem realizadas.
 
 ## // Stack utilizada
 
@@ -13,7 +13,7 @@ Aplicação desenvolvida para gerenciamento diário de tarefas a ser realizadas.
 
 ## // Links
 
-[![linkprojeto](https://img.shields.io/badge/veja_o_projeto-green?style=for-the-badge&logo=ko-fi&logoColor=green&labelColor=white)](https://patricklima.vercel.app/)
+[![linkprojeto](https://img.shields.io/badge/veja_o_projeto-green?style=for-the-badge&logo=ko-fi&logoColor=green&labelColor=white)](https://tarefaswa.vercel.app)
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=prefect&logoColor=000&labelColor=white)](https://patricklima.vercel.app/)
 
