@@ -12,12 +12,11 @@ export const MainPage = ({ children }: Props) => {
     <main
       className="mainBox mx-auto min-h-screen pt-16 flex flex-col antialiased relative justify-between">
       <div>
-      <Header />
-      <TitleProject title={"Lista de "} subtitle={"Tarefas"} />
-      <div className='px-4 md:px-0'>
-        {children}
-      </div>
-
+        <Header />
+        <TitleProject title={"Lista de "} subtitle={"Tarefas"} />
+        <div className='px-4 md:px-0'>
+          {children}
+        </div>
       </div>
       <Footer />
     </main>
