@@ -1,3 +1,4 @@
+import './main.css'
 import { Header } from "../header"
 import { TitleProject } from "../titleProject"
 import { Footer } from "../footer/footer"
@@ -8,11 +9,15 @@ type Props = {
 
 export const MainPage = ({ children }: Props) => {
   return (
-    <main className="container mx-auto min-h-screen flex flex-col antialiased relative px-4 md-0 pt-16 justify-between">
+    <main
+      className="mainBox mx-auto min-h-screen pt-16 flex flex-col antialiased relative justify-between">
       <div>
-        <Header />
-        <TitleProject title={"Lista de "} subtitle={"Tarefas"} />
+      <Header />
+      <TitleProject title={"Lista de "} subtitle={"Tarefas"} />
+      <div className='px-4 md:px-0'>
         {children}
+      </div>
+
       </div>
       <Footer />
     </main>

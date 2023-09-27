@@ -1,0 +1,24 @@
+.mainBox {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .mainBox {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .mainBox {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .mainBox {
+    max-width: 64rem;
+  }
+}
+@media (min-width: 1280px) {
+  .mainBox {
+    max-width: 70rem;
+  }
+}

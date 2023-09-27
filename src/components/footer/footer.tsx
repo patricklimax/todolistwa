@@ -3,7 +3,7 @@ import { IconSettingsCode } from "@tabler/icons-react"
 export const Footer = () => {
   const year = new Date().getFullYear()
   return (
-    <footer className="flex flex-col items-center py-2 text-xs text-lime-500 bg-[#07090e]">
+    <footer className="flex flex-col items-center py-6 text-xs text-lime-500 bg-[#07090e]">
       {/* <div className="flex gap-1 items-center">
         <p>Desenvolvido com</p>
         <span><IconHeartCode size={16} />

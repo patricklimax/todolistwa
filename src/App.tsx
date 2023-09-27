@@ -10,7 +10,6 @@ type TaskProps = {
   isCompleted: boolean
 }
 
-
 export default function App() {
   const dataLocalStorage = (JSON.parse(localStorage.getItem('TAREFAS') || '[]'))
   const [tasks, setTasks] = useState<TaskProps[]>(dataLocalStorage);
@@ -81,7 +80,7 @@ export default function App() {
 
   return (
     <MainPage >
-      <section className='w-full py-5 md:w-3/4 mx-auto'>
+      <section className='w-full md:w-3/4 mx-auto'>
         <div className='flex gap-4 justify-center items-center rounded p-2 md:px-0 bg-slate-800'>
           <input
             className='w-full md:w-1/2 h-10 bg-transparent border border-[#07090e] rounded px-4 outline-none focus:outline-none text-slate-400 placeholder:text-slate-400 text-base font-medium'
@@ -141,11 +140,11 @@ export default function App() {
           </ul>
 
           {tasksLength <= 0 && (
-            <section className="w-full flex flex-col items-center justify-center bg-slate-800 rounded py-12 gap-3">
+            <section className="flex flex-col items-center justify-center bg-slate-800 rounded py-28 md:py-12 gap-3">
               <IconClipboardText size={50} color={'#84cc16'} stroke={2} />
-              <div className='text-slate-400'>
-                <p>Você ainda não tem tarefas cadastradas</p>
-                <p>Crie tarefas e organize seus itens a fazer</p>
+              <div className='text-slate-400 text-center'>
+                <p>Você ainda não tem tarefas cadastradas.</p>
+                <p>Crie tarefas e mantenha sua rotina organizada.</p>
               </div>
             </section>
           )}
