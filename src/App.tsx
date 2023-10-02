@@ -30,13 +30,21 @@ export default function App() {
       alert('Obrigatório inserir uma tarefa.')
     } else {
       e.preventDefault();
-      setTasks([...tasks,
-      {
+
+      const tarefaSalvar = {
         id: crypto.randomUUID(),
         title: newTask,
         time: currentDate,
         isCompleted: false
-      }])
+      }
+      setTasks(([...tasks, tarefaSalvar])
+        .sort((a: TaskProps, b: TaskProps): 1 | -1 => {
+          if (a.isCompleted < b.isCompleted) {
+            return -1
+          } else {
+            return 1
+          }
+        }))
       setNewTask('')
     }
   }
@@ -48,24 +56,38 @@ export default function App() {
       if (newTask === "") {
         alert('Obrigatório inserir uma tarefa.')
       } else {
-        setTasks([...tasks,
+        setTasks(([...tasks,
         {
           id: crypto.randomUUID(),
           title: newTask,
           time: currentDate,
           isCompleted: false
-        }])
+        }].sort((a: TaskProps, b: TaskProps): 1 | -1 => {
+          if (a.isCompleted < b.isCompleted) {
+            return -1
+          } else {
+            return 1
+          }
+        })))
         setNewTask('')
       }
     } else if (e.which === ESCAPE_KEY) {
       setNewTask('')
     }
+
   }
 
   const taskCompleted = (id: string) => {
-    setTasks(tasks.map(tasks => (tasks.id === id
+    setTasks((tasks.map(tasks => (tasks.id === id
       ? { ...tasks, isCompleted: !tasks.isCompleted }
-      : tasks)))
+      : tasks)).sort((a: TaskProps, b: TaskProps): 1 | -1 => {
+        if (a.isCompleted < b.isCompleted) {
+          return -1
+        } else {
+          return 1
+        }
+      })))
+
   }
 
   const removeTask = (id: string) => {
