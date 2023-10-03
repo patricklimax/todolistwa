@@ -1,7 +1,10 @@
 import './globals.css'
 import { FormEvent, useEffect, useState } from 'react';
-import { IconCheckbox, IconClipboardText, IconDeviceFloppy, IconTrashX } from '@tabler/icons-react';
+import { IconCheckbox, IconChecks, IconDeviceFloppy, IconTrashX } from '@tabler/icons-react';
 import { MainPage } from './components/main/main';
+import { ButtonChecked, ButtonRemove } from './components/button/button';
+import { NoTask } from './components/noTask/noTask';
+import { NotificationTask } from './components/notificationsTask/notification';
 
 type TaskProps = {
   id: string,
@@ -25,19 +28,19 @@ export default function App() {
     second: '2-digit',
   })
 
-  const addNewTask = (e: FormEvent) => {
+  const addNewTask = (e: FormEvent): void => {
     if (newTask === "") {
       alert('Obrigatório inserir uma tarefa.')
     } else {
       e.preventDefault();
 
-      const tarefaSalvar = {
+      const taskToSave = {
         id: crypto.randomUUID(),
         title: newTask,
         time: currentDate,
         isCompleted: false
       }
-      setTasks(([...tasks, tarefaSalvar])
+      setTasks(([...tasks, taskToSave])
         .sort((a: TaskProps, b: TaskProps): 1 | -1 => {
           if (a.isCompleted < b.isCompleted) {
             return -1
@@ -74,7 +77,6 @@ export default function App() {
     } else if (e.which === ESCAPE_KEY) {
       setNewTask('')
     }
-
   }
 
   const taskCompleted = (id: string) => {
@@ -87,7 +89,6 @@ export default function App() {
           return 1
         }
       })))
-
   }
 
   const removeTask = (id: string) => {
@@ -103,9 +104,9 @@ export default function App() {
   return (
     <MainPage >
       <section className='w-full md:w-3/4 mx-auto'>
-        <div className='flex gap-4 justify-center items-center rounded p-2 md:px-0 bg-slate-800'>
+        <div className='flex gap-2 justify-center items-center rounded p-2 md:px-0 bg-slate-800'>
           <input
-            className='w-full md:w-1/2 h-10 bg-transparent border border-[#07090e] rounded px-4 outline-none focus:outline-none text-slate-400 placeholder:text-slate-400 text-base font-medium'
+            className='inputSave border border-[#07090e]'
             type="text"
             placeholder='O que você precisa fazer?'
             value={newTask}
@@ -117,20 +118,16 @@ export default function App() {
           </button>
         </div>
 
-        <div className='py-6 text-sm font-medium text-lime-500 flex justify-between '>
-          <p>Tarefas criadas
-            <span className='text-xs ml-2 px-2 py-1 bg-slate-800 rounded-full text-slate-400'>
-              {tasksLength}
-            </span>
-          </p>
-          <p>Tarefas concluídas
-            <span className='text-xs ml-2 px-2 py-1 bg-slate-800 rounded-full text-slate-400'>
-              {taskFinish} de {tasksLength}
-            </span>
-          </p>
+        <div className='py-6 text-sm font-medium text-lime-500 flex justify-between'>
+          <NotificationTask title={'Tarefas criadas'}>
+            {tasksLength}
+          </NotificationTask>
+          <NotificationTask title={'Tarefas concluídas'}>
+            {taskFinish} de {tasksLength}
+          </NotificationTask>
         </div>
 
-        <div className='w-full'>
+        <div>
           <ul className='w-full flex flex-col gap-4 rounded'>
             {tasks.map(task => (
               <li
@@ -143,34 +140,27 @@ export default function App() {
                   <p className='text-[10px] text-white'>{task.time}</p>
                 </div>
                 <div className='flex gap-1 md:gap-2 text-sm text-gray-300'>
-                  <button
-                    className='button finished'
+                  {task.isCompleted === true &&
+                    <div className='flex items-center gap-1 rounded p-2 bg-lime-500 text-slate-800'>
+                      <IconChecks size={22} stroke={2} />
+                      <p className='hidden md:flex font-semibold'>Feito</p>
+                    </div>
+                  }
+                  <ButtonChecked
                     onClick={() => taskCompleted(task.id)}
-                    title='Tarefa finalizada'>
-                    <IconCheckbox stroke={2} size={22} />
-                  </button>
+                    children={<IconCheckbox size={22} stroke={2} />} />
 
-                  <button
-                    className='button remove'
+                  <ButtonRemove
                     onClick={() => removeTask(task.id)}
-                    title='Remover tarefa'>
-                    <IconTrashX stroke={2} size={22} />
-                  </button>
+                    children={<IconTrashX size={22} stroke={2} />} />
                 </div>
               </li>
             ))}
           </ul>
 
           {tasksLength <= 0 && (
-            <section className="flex flex-col items-center justify-center bg-slate-800 rounded py-28 md:py-12 gap-3">
-              <IconClipboardText size={50} color={'#84cc16'} stroke={2} />
-              <div className='text-slate-400 text-center'>
-                <p>Você ainda não tem tarefas cadastradas.</p>
-                <p>Crie tarefas e mantenha sua rotina organizada.</p>
-              </div>
-            </section>
+            <NoTask />
           )}
-
         </div>
       </section>
     </MainPage>
