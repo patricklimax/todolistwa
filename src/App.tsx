@@ -5,6 +5,7 @@ import { MainPage } from './components/main/main';
 import { ButtonChecked, ButtonRemove } from './components/button/button';
 import { NoTask } from './components/noTask/noTask';
 import { NotificationTask } from './components/notificationsTask/notification';
+import { MagicMotion } from 'react-magic-motion';
 
 type TaskProps = {
   id: string,
@@ -103,66 +104,68 @@ export default function App() {
 
   return (
     <MainPage >
-      <section className='w-full md:w-3/4 mx-auto'>
-        <div className='flex gap-2 justify-center items-center rounded p-2 md:px-0 bg-slate-800'>
-          <input
-            className='inputSave border border-[#07090e]'
-            type="text"
-            placeholder='O que você precisa fazer?'
-            value={newTask}
-            onChange={e => setNewTask(e.target.value)}
-            onKeyDown={onKeyDown} />
+      <MagicMotion>
+        <section className='w-full md:w-3/4 mx-auto'>
+          <div className='flex gap-2 justify-center items-center rounded p-2 md:px-0 bg-slate-800'>
+            <input
+              className='inputSave border border-[#07090e]'
+              type="text"
+              placeholder='O que você precisa fazer?'
+              value={newTask}
+              onChange={e => setNewTask(e.target.value)}
+              onKeyDown={onKeyDown} />
 
-          <button className='button save' onClick={addNewTask} title='Salvar tarefa?'>
-            <IconDeviceFloppy stroke={2} size={22} />
-          </button>
-        </div>
+            <button className='button save' onClick={addNewTask} title='Salvar tarefa?'>
+              <IconDeviceFloppy stroke={2} size={22} />
+            </button>
+          </div>
 
-        <div className='py-6 text-sm font-medium text-lime-500 flex justify-between'>
-          <NotificationTask title={'Tarefas criadas'}>
-            {tasksLength}
-          </NotificationTask>
-          <NotificationTask title={'Tarefas concluídas'}>
-            {taskFinish} de {tasksLength}
-          </NotificationTask>
-        </div>
+          <div className='py-6 text-sm font-medium text-lime-500 flex justify-between'>
+            <NotificationTask title={'Tarefas criadas'}>
+              {tasksLength}
+            </NotificationTask>
+            <NotificationTask title={'Tarefas concluídas'}>
+              {taskFinish} de {tasksLength}
+            </NotificationTask>
+          </div>
 
-        <div>
-          <ul className='w-full flex flex-col gap-4 rounded'>
-            {tasks.map(task => (
-              <li
-                key={task.id}
-                className='flex justify-between gap-1 items-center border border-slate-800 px-2 py-1 md:pl-4 rounded text-base'>
-                <div className='text-slate-400 w-full'>
-                  <p className={['taskTitle', task.isCompleted ? "cheked" : ""].join(" ")}>
-                    {task.title}
-                  </p>
-                  <p className='text-[10px] text-white'>{task.time}</p>
-                </div>
-                <div className='flex gap-1 md:gap-2 text-sm text-gray-300'>
-                  {task.isCompleted === true &&
-                    <div className='flex items-center gap-1 rounded p-2 bg-lime-500 text-slate-800'>
-                      <IconChecks size={22} stroke={2} />
-                      <p className='hidden md:flex font-semibold'>Feito</p>
-                    </div>
-                  }
-                  <ButtonChecked
-                    onClick={() => taskCompleted(task.id)}
-                    children={<IconCheckbox size={22} stroke={2} />} />
+          <div>
+            <ul className='w-full flex flex-col gap-4 rounded'>
+              {tasks.map(task => (
+                <li
+                  key={task.id}
+                  className='flex justify-between gap-1 items-center border border-slate-800 px-2 py-1 md:pl-4 rounded text-base'>
+                  <div className='text-slate-400 w-full'>
+                    <p className={['taskTitle', task.isCompleted ? "cheked" : ""].join(" ")}>
+                      {task.title}
+                    </p>
+                    <p className='text-[10px] text-white'>{task.time}</p>
+                  </div>
+                  <div className='flex gap-1 md:gap-2 text-sm text-gray-300'>
+                    {task.isCompleted === true &&
+                      <div className='flex items-center gap-1 rounded p-2 bg-lime-500 text-slate-800'>
+                        <IconChecks size={22} stroke={2} />
+                        <p className='hidden md:flex font-semibold'>Feito</p>
+                      </div>
+                    }
+                    <ButtonChecked
+                      onClick={() => taskCompleted(task.id)}
+                      children={<IconCheckbox size={22} stroke={2} />} />
 
-                  <ButtonRemove
-                    onClick={() => removeTask(task.id)}
-                    children={<IconTrashX size={22} stroke={2} />} />
-                </div>
-              </li>
-            ))}
-          </ul>
+                    <ButtonRemove
+                      onClick={() => removeTask(task.id)}
+                      children={<IconTrashX size={22} stroke={2} />} />
+                  </div>
+                </li>
+              ))}
+            </ul>
 
-          {tasksLength <= 0 && (
-            <NoTask />
-          )}
-        </div>
-      </section>
+            {tasksLength <= 0 && (
+              <NoTask />
+            )}
+          </div>
+        </section>
+      </MagicMotion>
     </MainPage>
   )
 }
